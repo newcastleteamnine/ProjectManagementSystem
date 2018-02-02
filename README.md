@@ -2,7 +2,8 @@
 Project Management System - File Structure
 
 Public
-Index.php
+
+  Index.php
 
   Login
     Login.php
@@ -35,6 +36,7 @@ Index.php
       Update.php
       
   Admin
+  
     Account Admin
       Create.php
       View.php
@@ -42,6 +44,7 @@ Index.php
       Update.php
 
 Private
+
   Functions.php
   Initialisation.php
   
