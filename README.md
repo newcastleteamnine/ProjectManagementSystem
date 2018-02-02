@@ -2,45 +2,46 @@
 
 Public
 
+    Index.php
+  
     Login
+
       Login.php
       Logout.php
       Session.php
 
     Team Members
-      Schedule 
-        View.php
-        Update.php
 
-    index.php
+      Schedule
+      View.php
+      Update.php
 
     Staff
 
-      Project
-        Create.php
-        View.php
-        Delete.php
-        Update.php
+    Project
+      Create.php
+      View.php
+      Delete.php
+      Update.php
 
-        Task
-          Create.php
-          Delete.php
-          Update.php
-          View.php
+    Task
+      Add.php
+      Delete.php
+      Update.php
+      View.php
 
-      Team
-        Create.php
-        View.php
-        Delete.php
-        Update.php
+    Team
+      Create.php
+      View.php
+      Delete.php
+      Update.php
 
     Admin
-
       Account Admin
-        Create.php
-        View.php
-        Delete.php
-        Update.php
+      Create.php
+      View.php
+      Delete.php
+      Update.php
 
 Private
 
@@ -55,10 +56,7 @@ Private
       Main.css
       Bootstrap.css
       Normalize.css
-
+  
     Images
-
     Fonts
-
     Scripts
-
