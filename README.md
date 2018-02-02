@@ -1,10 +1,7 @@
-# ProjectManagementSystem
-Project Management System - File Structure
+# Project Management System
 
 Public
-
-  Index.php
-
+  
   Login
     Login.php
     Logout.php
@@ -14,6 +11,8 @@ Public
     Schedule 
       View.php
       Update.php
+      
+  index.php
       
   Staff
   
