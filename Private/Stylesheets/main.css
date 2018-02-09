@@ -1,0 +1,23 @@
+body{
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: lightgray;
+}
+section{
+  height: 100vh;
+}
+.loginblock{
+
+}
+.loginform{
+  padding: 50px;
+  border-radius: 20px;
+  background-color: lightblue;
+  position: fixed;
+top: 50%;
+left: 50%;
+/* bring your own prefixes */
+transform: translate(-50%, -50%);
+}
