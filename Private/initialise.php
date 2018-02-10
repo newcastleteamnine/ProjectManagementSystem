@@ -4,6 +4,7 @@ define("PRIVATE_PATH", dirname(__FILE__));
 define("PROJECT_PATH", dirname(PRIVATE_PATH));
 define("PUBLIC_PATH", PROJECT_PATH . '/Public');
 define("SHARED_PATH", PRIVATE_PATH . '/Shared');
+define("LOGIN_PATH", PRIVATE_PATH . '/Login');
 
 
 $public_end = strpos($_SERVER['SCRIPT_NAME'], '/public') + 7;
