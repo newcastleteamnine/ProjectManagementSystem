@@ -1,0 +1,8 @@
+1.Still can not decide the relation between member and task.
+2.For member,maybe they can manage their task,make a plan how to finish job.while submit task,set the status of task to finished.
+3.Groupleader will submit project while all the tasks have been finished,then perhaps dismiss the group and apply to delete the account for leader?
+4.How to create Admin?apply from website or just set them in the database(should need more than one admin)
+
+5.Process:admin -->create member; create project ;create group(status should be incomplete ata first and match connect project) & create leader;
+          groupleader -->add member ; allocate task  ;submit while all finished
+          member -->can manage own task(divide into parts) & submit task
