@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 21, 2018 at 03:42 PM
+-- Generation Time: Mar 22, 2018 at 12:06 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -47,9 +47,7 @@ CREATE TABLE `Members` (
   `Department` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Job_Title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Level` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
-  `Password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `PasswordSalt` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `PasswordHashAlgor` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `Password_Hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
