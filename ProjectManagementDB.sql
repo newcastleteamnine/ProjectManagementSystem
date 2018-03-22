@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 20, 2018 at 06:59 PM
+-- Generation Time: Mar 21, 2018 at 03:42 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -29,8 +29,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Assign` (
-  `TeamID` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `EmployeeID` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `TeamID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `EmployeeID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `Role` varchar(70) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -40,11 +41,12 @@ CREATE TABLE `Assign` (
 --
 
 CREATE TABLE `Members` (
-  `EmployeeID` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Department` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Job_Title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Level` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `EmployeeID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `First_Name` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
+  `Surname` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
+  `Department` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Job_Title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Level` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
   `Password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `PasswordSalt` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `PasswordHashAlgor` varchar(255) COLLATE utf8_unicode_ci NOT NULL
@@ -57,9 +59,9 @@ CREATE TABLE `Members` (
 --
 
 CREATE TABLE `Project` (
-  `ProjectID` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ProjectID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `Name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `Status` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `Start_Time` datetime(6) NOT NULL,
   `Deadline` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -71,13 +73,13 @@ CREATE TABLE `Project` (
 --
 
 CREATE TABLE `Task` (
-  `TaskID` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `TaskID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `Description` text COLLATE utf8_unicode_ci NOT NULL,
   `Start_Time` datetime(6) NOT NULL,
   `End_Date` datetime(6) NOT NULL,
-  `Status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Next_TaskID` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ProjectID` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `Status` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `Next_TaskID` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ProjectID` varchar(10) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -87,8 +89,9 @@ CREATE TABLE `Task` (
 --
 
 CREATE TABLE `Teams` (
-  `TeamID` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Role` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `TeamID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `TeamName` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `Description` text COLLATE utf8_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -98,8 +101,8 @@ CREATE TABLE `Teams` (
 --
 
 CREATE TABLE `Work_on` (
-  `EmployeeID` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `TaskID` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `EmployeeID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `TaskID` varchar(10) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -162,8 +165,8 @@ ALTER TABLE `Assign`
 -- Constraints for table `Task`
 --
 ALTER TABLE `Task`
-  ADD CONSTRAINT `Task_ibfk_2` FOREIGN KEY (`Next_TaskID`) REFERENCES `Task` (`TaskID`),
-  ADD CONSTRAINT `Task_ibfk_3` FOREIGN KEY (`ProjectID`) REFERENCES `Project` (`ProjectID`);
+  ADD CONSTRAINT `Task_ibfk_1` FOREIGN KEY (`Next_TaskID`) REFERENCES `Task` (`TaskID`),
+  ADD CONSTRAINT `Task_ibfk_2` FOREIGN KEY (`ProjectID`) REFERENCES `Project` (`ProjectID`);
 
 --
 -- Constraints for table `Work_on`
