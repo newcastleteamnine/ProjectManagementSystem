@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 22, 2018 at 12:06 PM
+-- Generation Time: Mar 23, 2018 at 12:30 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Assign` (
-  `TeamID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `EmployeeID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `TeamID` int(11) NOT NULL,
+  `EmployeeID` int(11) NOT NULL,
   `Role` varchar(70) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -41,7 +41,8 @@ CREATE TABLE `Assign` (
 --
 
 CREATE TABLE `Members` (
-  `EmployeeID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `EmployeeID` int(11) NOT NULL,
+  `Email` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
   `First_Name` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   `Surname` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   `Department` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -57,7 +58,7 @@ CREATE TABLE `Members` (
 --
 
 CREATE TABLE `Project` (
-  `ProjectID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `ProjectID` int(11) NOT NULL,
   `Name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `Status` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `Start_Time` datetime(6) NOT NULL,
@@ -71,13 +72,13 @@ CREATE TABLE `Project` (
 --
 
 CREATE TABLE `Task` (
-  `TaskID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `TaskID` int(11) NOT NULL,
   `Description` text COLLATE utf8_unicode_ci NOT NULL,
   `Start_Time` datetime(6) NOT NULL,
   `End_Date` datetime(6) NOT NULL,
   `Status` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `Next_TaskID` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ProjectID` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+  `Next_TaskID` int(11) DEFAULT NULL,
+  `ProjectID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -87,7 +88,7 @@ CREATE TABLE `Task` (
 --
 
 CREATE TABLE `Teams` (
-  `TeamID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `TeamID` int(11) NOT NULL,
   `TeamName` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `Description` text COLLATE utf8_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -99,8 +100,8 @@ CREATE TABLE `Teams` (
 --
 
 CREATE TABLE `Work_on` (
-  `EmployeeID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `TaskID` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+  `EmployeeID` int(11) NOT NULL,
+  `TaskID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -119,19 +120,23 @@ ALTER TABLE `Assign`
 -- Indexes for table `Members`
 --
 ALTER TABLE `Members`
-  ADD PRIMARY KEY (`EmployeeID`);
+  ADD PRIMARY KEY (`EmployeeID`),
+  ADD UNIQUE KEY `EmployeeID` (`EmployeeID`),
+  ADD UNIQUE KEY `Email` (`Email`);
 
 --
 -- Indexes for table `Project`
 --
 ALTER TABLE `Project`
-  ADD PRIMARY KEY (`ProjectID`);
+  ADD PRIMARY KEY (`ProjectID`),
+  ADD UNIQUE KEY `ProjectID` (`ProjectID`);
 
 --
 -- Indexes for table `Task`
 --
 ALTER TABLE `Task`
   ADD PRIMARY KEY (`TaskID`),
+  ADD UNIQUE KEY `TaskID` (`TaskID`),
   ADD KEY `Prev_TaskID` (`Next_TaskID`),
   ADD KEY `ProjectID` (`ProjectID`);
 
@@ -139,7 +144,8 @@ ALTER TABLE `Task`
 -- Indexes for table `Teams`
 --
 ALTER TABLE `Teams`
-  ADD PRIMARY KEY (`TeamID`);
+  ADD PRIMARY KEY (`TeamID`),
+  ADD UNIQUE KEY `TeamID` (`TeamID`);
 
 --
 -- Indexes for table `Work_on`
@@ -147,6 +153,34 @@ ALTER TABLE `Teams`
 ALTER TABLE `Work_on`
   ADD PRIMARY KEY (`EmployeeID`,`TaskID`),
   ADD KEY `TaskID` (`TaskID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `Members`
+--
+ALTER TABLE `Members`
+  MODIFY `EmployeeID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `Project`
+--
+ALTER TABLE `Project`
+  MODIFY `ProjectID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `Task`
+--
+ALTER TABLE `Task`
+  MODIFY `TaskID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `Teams`
+--
+ALTER TABLE `Teams`
+  MODIFY `TeamID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
