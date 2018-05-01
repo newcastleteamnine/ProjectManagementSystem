@@ -1,0 +1,26 @@
+The testcases are all included in the framework,we finished it following the tempalte.The path is  "D:\xampp\htdocs\cakeprojects\website\tests\TestCase\Controller" for the 
+controller test and "D:\xampp\htdocs\cakeprojects\website\tests\TestCase\Model\Table" for the table test.
+
+Here give some examples:
+
+ProjectsControllerTest:
+
+1)test add:
+
+data:       'id' => 1,
+            'Name' => 'testName',
+            'Status' => 'testStatus',
+            'created' => '2018-04-05 00:02:49',
+            'Deadline' => '2018-04-05 00:02:49',
+
+result:using sql to find 'where id=1'in projects table,
+return assertEquals(1, $query->count())-----true : "."
+
+
+
+2)test delete :
+
+data $id='1';
+
+result:using sql to find 'where id=1'in projects table,
+return assertEquals(0, $query->count())-----failure : "F"
